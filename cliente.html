@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Cliente | Gisela Pilates</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabaseClient.js"></script>
+  <script defer src="js/booking.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html">Gisela Pilates</a><nav class="nav-links"><a href="index.html">Início</a><a href="servicos.html">Serviços</a><a href="marcacoes.html">Marcações</a><a href="cliente.html">Área do Cliente</a><a href="sobre.html">Sobre</a><a href="contacto.html">Contacto</a></nav></div></header>
+<section class="section"><div class="container">
+  <span class="kicker">Área privada</span>
+  <h1>Gestão de conta e marcações</h1>
+  <p>Regista-te, entra na tua conta e gere as próximas aulas.</p>
+
+  <div id="auth-panel" class="grid-3">
+    <form id="signup-form" class="card"><h3>Registo</h3><label>Email<input name="email" type="email" required></label><label>Senha<input name="password" type="password" minlength="6" required></label><button class="btn btn-primary">Criar conta</button></form>
+    <form id="signin-form" class="card"><h3>Login</h3><label>Email<input name="email" type="email" required></label><label>Senha<input name="password" type="password" required></label><button class="btn btn-primary">Entrar</button></form>
+    <form id="reset-form" class="card"><h3>Recuperar senha</h3><label>Email<input id="reset-email" type="email" required></label><button class="btn btn-secondary">Enviar recuperação</button></form>
+  </div>
+
+  <div id="auth-msg"></div>
+
+  <div id="client-dashboard" class="hidden">
+    <div class="card">
+      <p>Bem-vinda/o, <strong id="user-email"></strong></p>
+      <button id="logout-btn" class="btn btn-secondary">Terminar sessão</button>
+    </div>
+
+    <form id="booking-form" class="card" style="margin-top:1rem;">
+      <h3>Nova marcação</h3>
+      <div class="form-grid">
+        <div><label>Tipo de aula<select id="service_id" name="service_id" required><option value="">Selecionar...</option></select></label></div>
+        <div><label>Professor<select id="instructor_id" name="instructor_id" required><option value="">Selecionar...</option></select></label></div>
+        <div><label>Dia<input type="date" name="appointment_date" required></label></div>
+        <div><label>Hora<input type="time" name="appointment_time" required></label></div>
+      </div>
+      <label>Notas<textarea name="notes" placeholder="Objetivos, limitações, etc."></textarea></label>
+      <button class="btn btn-primary">Confirmar marcação</button>
+      <div id="booking-msg"></div>
+    </form>
+
+    <div style="margin-top:1rem;">
+      <h3>Próximas aulas</h3>
+      <ul id="appointments-list" class="grid-3 list-reset"></ul>
+    </div>
+  </div>
+</div></section>
+<footer class="site-footer"><div class="container small">Autenticação segura e gestão de marcações com Supabase.</div></footer>
+<script src="js/main.js"></script>
+</body></html>
